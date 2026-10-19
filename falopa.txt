@@ -1,0 +1,142 @@
+El análisis se centrará inicialmente en los datos correspondientes a las operaciones de fractura hidráulica, con especial atención a sus características técnicas, operativas y temporales. Asimismo, se investigarán las posibles relaciones entre las variables de las operaciones de fracturación y el comportamiento productivo posterior de los pozos, siempre que se disponga de información de producción que permita realizar dicha evaluación.
+
+
+Durante esta fase se buscará responder las siguientes preguntas:
+
+- ¿Cuál es la estructura del conjunto de datos y qué representa cada registro?
+
+- ¿Qué características técnicas y operativas presentan los pozos y sus intervenciones de fractura hidráulica?
+
+- ¿Cuál es la cobertura temporal, geográfica y operativa de los datos?
+
+- ¿Existen registros duplicados, valores faltantes, inconsistencias, errores de formato o valores atípicos?
+
+- ¿Cómo se distribuyen las principales variables y qué relaciones preliminares pueden identificarse entre ellas?
+
+- ¿Qué características de las operaciones podrían aportar información relevante para explicar o predecir la producción posterior?
+
+- ¿Qué información adicional se necesita para construir una variable objetivo que represente adecuadamente la evolución productiva o la viabilidad económica de un pozo?
+
+- ¿Cuáles son las principales limitaciones que podrían afectar la confiabilidad y la generalización de las predicciones?
+
+
+Un aspecto central del proyecto consiste en distinguir entre dos objetivos relacionados, pero metodológicamente diferentes: la predicción de la evolución de la producción y la estimación de la viabilidad económica de un pozo.
+
+La predicción de la evolución productiva requiere disponer de registros históricos de producción, preferentemente con una resolución temporal mensual o más detallada. En cambio, la estimación de la viabilidad económica exige, además, definir un criterio explícito de rentabilidad o de producción económicamente suficiente. Este criterio puede depender de variables como los precios de los hidrocarburos, los costos operativos, los costos de intervención, las condiciones de explotación y otros factores económicos pertinentes.
+
+
+Por consiguiente, el análisis de los datos no se limitará a describir la información existente, sino que también evaluará su correspondencia con el objetivo predictivo. Los resultados permitirán establecer qué variables pueden utilizarse, qué limitaciones deben considerarse y qué información complementaria será necesaria antes de avanzar hacia la preparación de los datos y la construcción de los modelos.
+
+
+
+**Fuente principal: datos de fractura hidráulica**
+
+La fuente principal será el conjunto de datos públicos correspondiente al Adjunto IV, que contiene información sobre operaciones de fractura hidráulica realizadas en pozos de hidrocarburos en Argentina.
+
+El recurso se encuentra publicado en el portal oficial de datos abiertos del sector energético. Para asegurar la trazabilidad del proyecto, se conservarán tanto la dirección de la ficha del conjunto de datos como la URL específica del archivo descargable.
+
+**Recurso principal:**
+
+- Organismo publicador: el organismo responsable indicado en la ficha oficial del recurso.
+
+- Conjunto de datos: información de fracturas de pozos de hidrocarburos, Adjunto IV.
+
+- Formato de origen: CSV.
+
+- Portal de publicación: portal oficial de datos abiertos del sector energético argentino.
+
+- URL del recurso: http://datos.energia.gob.ar/dataset/71fa2e84-0316-4a1b-af68-7f35e41f58d7/resource/2280ad92-6ed3-403e-a095-50139863ab0d/download/datos-de-fractura-de-pozos-de-hidrocarburos-adjunto-iv-actualizacin-diaria.csv
+
+La dirección anterior identifica el recurso utilizado como punto de partida. Dado que la disponibilidad del servidor y la actualización del archivo pueden cambiar, se registrarán la fecha efectiva de descarga, la versión obtenida y los resultados de las verificaciones realizadas sobre el archivo.
+
+Este conjunto constituye la fuente inicial porque permite caracterizar las intervenciones de fractura hidráulica y estudiar las diferencias entre las operaciones según sus características técnicas, sus insumos y sus fechas.
+
+Entre las variables identificadas en la estructura del archivo se encuentran:
+
+- Identificadores de pozos e intervenciones de fractura.
+
+- Cuenca y tipo de reservorio.
+
+- Longitud de la rama horizontal.
+
+- Cantidad de fracturas.
+
+- Volumen de agua inyectada.
+
+- Cantidad de arena bombeada de origen nacional e importado.
+
+- Volumen de CO₂ inyectado, cuando corresponda.
+
+- Presión máxima registrada.
+
+- Potencia de los equipos de fractura.
+
+- Fechas de inicio y finalización de las operaciones.
+
+- Fecha de actualización del registro.
+
+La descripción definitiva de las variables, sus tipos de datos, sus unidades de medida y sus significados se contrastará con el diccionario de datos y los metadatos oficiales. No se atribuirá una interpretación técnica a una columna únicamente a partir de su nombre.
+
+También se verificará el nivel de granularidad del archivo, es decir, si cada fila representa una intervención, una etapa, un pozo u otra unidad de registro. Esta distinción es necesaria para evitar contar varias veces un mismo pozo cuando haya recibido más de una operación.
+
+**Limitación principal de la fuente:** los datos de fracturación permiten estudiar las características de las intervenciones, pero no sustituyen una serie histórica de producción. Por sí solos, no permiten estimar la curva de declive de un pozo, determinar su producción acumulada ni establecer cuándo dejará de ser económicamente viable.
+
+**Obtención y gestión de los datos:**
+
+La adquisición de los datos se realizará mediante descarga directa desde las fuentes oficiales y, cuando resulte técnicamente conveniente, mediante procedimientos automatizados implementados en Python.
+
+El procedimiento deberá garantizar la integridad del archivo original, la reproducibilidad de la adquisición y la trazabilidad de las versiones utilizadas. Se conservarán los datos originales sin modificaciones y se realizarán las transformaciones posteriores sobre copias de trabajo.
+
+**Descarga manual**
+
+La descarga manual se utilizará como alternativa cuando el portal presente problemas de conectividad, restricciones del navegador o dificultades para completar la adquisición automatizada.
+
+El procedimiento será el siguiente:
+
+- Acceder al portal oficial y localizar la ficha del conjunto de datos correspondiente al Adjunto IV.
+
+- Identificar el recurso CSV específico que se utilizará en el proyecto.
+
+- Descargar el archivo mediante el navegador.
+
+- Verificar que la descarga haya finalizado correctamente y que el archivo pueda abrirse.
+
+- Guardar el archivo en el directorio destinado a los datos originales.
+
+- Registrar el nombre del archivo, su tamaño, la fecha de descarga y la dirección de origen.
+
+- Calcular la huella criptográfica SHA-256 para identificar la versión exacta del archivo.
+
+- Importar el archivo mediante pandas y verificar sus dimensiones, sus encabezados y la coherencia básica de su contenido.
+
+- Conservar el archivo original sin aplicar filtros ni modificaciones sobre él.
+
+La descarga manual permitirá continuar el trabajo cuando el servidor no responda adecuadamente desde el entorno de ejecución. Sin embargo, el archivo descargado deberá superar las mismas verificaciones de integridad y legibilidad que cualquier archivo obtenido automáticamente.
+
+**Descarga automatizada**
+
+Cuando la disponibilidad del recurso lo permita, se utilizará Python para automatizar la descarga y facilitar la repetición del procedimiento.
+
+El proceso contemplará:
+
+- Acceso a la URL oficial del recurso.
+
+- Configuración de un tiempo de espera razonable.
+
+- Manejo explícito de errores de conexión y de respuesta HTTP.
+
+- Verificación de que el contenido descargado corresponda al archivo esperado.
+
+- Validación de la legibilidad y estructura del CSV.
+
+- Conservación de las versiones originales.
+
+- Registro de la fecha de adquisición, el resultado del proceso y los errores detectados.
+
+- Reutilización de una copia local previamente validada cuando no sea necesaria una actualización.
+
+La existencia de un archivo en el sistema no se considerará prueba suficiente de una descarga exitosa. También se comprobará que no esté vacío, que contenga los encabezados esperados y que pueda leerse con la estructura prevista.
+
+Cuando una descarga falle, se utilizará una copia local válida o se recurrirá al procedimiento manual. Los reintentos tendrán un límite definido y no se reemplazará una versión válida por otra incompleta o defectuosa.
+
+

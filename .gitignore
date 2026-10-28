@@ -1,13 +1,12 @@
 @*
 artifacts/*
 !artifacts/.gitkeep
-.vscode
-.code-workspace
-__pycache__/
+
 
 
 #de acá para abajo es la plantilla pedorra de github
 # Byte-compiled / optimized / DLL files
+__pycache__/
 *.py[codz]
 *$py.class
 
